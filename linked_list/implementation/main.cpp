@@ -26,15 +26,13 @@ void transverseList(Node *head)
     }
     cout << "]" << endl;
 }
-void insertAtTheBeginning(Node *head, int data)
+Node* insertAtTheBeginning(Node *head, int data)
 {
     Node *newHead = new Node();
     newHead->data = data;
     newHead->next = head;
     head = newHead;
-    cout << "---------------------With insertion----------------------" << endl;
-
-    transverseList(head);
+    return head;
 }
 int main(int argc, char const *argv[])
 {
@@ -58,7 +56,9 @@ int main(int argc, char const *argv[])
     cout << "---------------------Without insertion----------------------" << endl;
     transverseList(head);
 
-    insertAtTheBeginning(head, 5);
-    
+    head = insertAtTheBeginning(head, 5);
+    cout << "---------------------With insertion----------------------" << endl;
+
+    transverseList(head);
     return 0;
 }
