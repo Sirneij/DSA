@@ -69,7 +69,7 @@ int main(int argc, char const *argv[])
 {
     int n = 4;
 
-    vector<vector<int>> matrix = buildMatrix(n); //{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}}; //{{5, 1, 9, 11}, {2, 4, 8, 10}, {13, 3, 6, 7}, {15, 14, 12, 16}};
+    vector<vector<int>> matrix = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}}; //{{5, 1, 9, 11}, {2, 4, 8, 10}, {13, 3, 6, 7}, {15, 14, 12, 16}};
     cout << "------------------ Original matrix -------------------------" << endl;
     printMatrix(matrix);
 
