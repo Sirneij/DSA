@@ -9,9 +9,9 @@ public:
     Node *next;
 };
 
+Node *head = new Node();
 
-
-void transverseList(Node *head)
+void transverseList(Node *head = head)
 {
     cout << "[";
     while (head != NULL)
@@ -26,7 +26,7 @@ void transverseList(Node *head)
     }
     cout << "]" << endl;
 }
-Node* insertAtTheBeginning(Node *head, int data)
+Node *insertAtTheBeginning(Node *head, int data)
 {
     Node *newHead = new Node();
     newHead->data = data;
@@ -34,10 +34,31 @@ Node* insertAtTheBeginning(Node *head, int data)
     head = newHead;
     return head;
 }
+
+void insertAtNthPosition(int data, int n)
+{
+    Node *newNode = new Node();
+    newNode->data = data;
+    newNode->next = NULL;
+    // Insert at the beginning?
+    if (n == 1)
+    {
+        newNode->next = head;
+        head = newNode;
+        return;
+    }
+
+    Node *nMinusOnethNode = head;
+    for (int i = 0; i < n - 2; i++)
+    {
+        nMinusOnethNode = nMinusOnethNode->next;
+    }
+    newNode->next = nMinusOnethNode->next;
+    nMinusOnethNode->next = newNode;
+}
 int main(int argc, char const *argv[])
 {
 
-    Node *head = new Node();
     Node *first = new Node();
     Node *second = new Node();
     Node *tail = new Node();
@@ -53,12 +74,11 @@ int main(int argc, char const *argv[])
 
     tail->data = 4;
     tail->next = NULL;
-    cout << "---------------------Without insertion----------------------" << endl;
     transverseList(head);
 
-    head = insertAtTheBeginning(head, 5);
-    cout << "---------------------With insertion----------------------" << endl;
+    // head = insertAtTheBeginning(head, 5);
+    insertAtNthPosition(9, 2);
+    transverseList();
 
-    transverseList(head);
     return 0;
 }
